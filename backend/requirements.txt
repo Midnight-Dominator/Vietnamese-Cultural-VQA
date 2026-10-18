@@ -1,0 +1,18 @@
+# Lõi web (không cần torch). Cài thêm requirements-ai.txt để chạy model thật.
+fastapi>=0.110.0,<1.0.0
+uvicorn[standard]>=0.28.0,<1.0.0
+pydantic-settings>=2.2.0,<3.0.0
+python-multipart>=0.0.9
+Pillow
+# Thư viện chạy model thật. Cài torch/torchvision TRƯỚC, theo máy của bạn:
+#   CPU : pip install torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cpu
+#   CUDA: pip install torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cu124
+# Khuyên dùng Python 3.12. Phiên bản dưới đây là bộ đã dùng để huấn luyện/kiểm thử model scratch.
+transformers==4.46.3
+tokenizers==0.20.3
+sentencepiece==0.2.0
+protobuf>=4.25,<6
+# Code remote của Vintern-1B-v2 (InternViT) import hai thư viện này.
+timm
+einops
+huggingface_hub

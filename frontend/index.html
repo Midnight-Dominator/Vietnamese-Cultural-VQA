@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hỏi đáp ảnh văn hóa Việt Nam</title>
+  <meta name="description" content="Tải ảnh về văn hóa Việt Nam lên, đặt câu hỏi bằng tiếng Việt và chọn mô hình AI để trả lời.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='7' y='7' width='22' height='22' fill='%23E3B232'/%3E%3Crect x='3' y='3' width='22' height='22' fill='%23F6F8F4' stroke='%231F2D5A' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Hỏi đáp ảnh văn hóa Việt Nam</h1>
+    <p id="server-status" class="server-status" role="status">Đang kết nối máy chủ</p>
+  </header>
+
+  <main class="workspace">
+    <section class="plate-col" aria-labelledby="image-heading">
+      <h2 id="image-heading" class="sr-only">Ảnh</h2>
+      <div class="plate" id="plate">
+        <input type="file" id="file-input" class="sr-only" accept="image/jpeg,image/png,image/webp">
+        <label for="file-input" id="drop" class="drop">
+          <span class="drop-title">Kéo ảnh vào đây</span>
+          <span class="drop-hint">hoặc bấm để chọn ảnh JPEG, PNG, WEBP, tối đa 10 MB</span>
+        </label>
+        <figure id="preview" class="preview" hidden>
+          <img id="preview-img" alt="Ảnh bạn đã chọn">
+        </figure>
+      </div>
+      <div class="plate-actions">
+        <p id="preview-name" class="file-name" hidden></p>
+        <button type="button" id="remove-image" class="link-button" hidden>Chọn ảnh khác</button>
+      </div>
+      <p id="image-error" class="field-error" role="alert" hidden></p>
+    </section>
+
+    <section class="ask-col" aria-labelledby="ask-heading">
+      <h2 id="ask-heading" class="sr-only">Đặt câu hỏi</h2>
+
+      <fieldset class="models" id="models">
+        <legend>Mô hình trả lời</legend>
+        <div id="model-list" class="model-list"></div>
+        <p id="model-note" class="model-note" hidden></p>
+      </fieldset>
+
+      <div class="thread-wrap">
+        <div id="empty" class="empty">
+          <p class="empty-title">Chọn một ảnh, rồi hỏi bằng tiếng Việt.</p>
+          <p class="empty-hint">Thử một trong các câu hỏi này:</p>
+          <ul id="samples" class="samples"></ul>
+        </div>
+        <ol id="thread" class="thread" aria-live="polite" aria-relevant="additions text"></ol>
+        <button type="button" id="clear-thread" class="link-button" hidden>Xóa lịch sử hỏi đáp</button>
+      </div>
+
+      <form id="ask-form" class="composer" autocomplete="off" novalidate>
+        <label for="question" class="composer-label">Câu hỏi về bức ảnh</label>
+        <textarea id="question" name="question" rows="3" maxlength="2000" placeholder="Ví dụ: Đây là lễ hội gì?"></textarea>
+        <p id="form-error" class="field-error" role="alert" hidden></p>
+        <div class="composer-row">
+          <span id="counter" class="counter" aria-live="off"></span>
+          <button type="submit" id="submit" class="primary">Hỏi mô hình</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
